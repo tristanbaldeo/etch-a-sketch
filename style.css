@@ -8,3 +8,18 @@ body {
     font-family: 'Roboto', sans-serif;
     height: 100vh;
 }
+
+.grid-container {
+    display: grid;
+    justify-content: flex-start;
+    align-items: center;
+    grid-template-rows: repeat(16, auto);
+    grid-template-columns: repeat(16, auto);
+}
+
+.row, .col {
+    background-color: rgb(243, 243, 243);
+    border: 1px solid rgb(190, 190, 190);
+    width: 32px;
+    height: 32px;
+}
