@@ -47,7 +47,7 @@ body {
     padding-top: 16px;
 }
 
-.grid-size {
+#grid-size {
     text-align: center;
     padding: 8px;
     width: 96px;
