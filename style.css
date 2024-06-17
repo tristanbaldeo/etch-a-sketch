@@ -86,7 +86,7 @@ body {
 
 .color-row {
     display: flex;
-    gap: 16px;
+    gap: 8px;
     justify-content: center;
 }
 
@@ -110,4 +110,11 @@ body {
 .row {
     box-sizing: border-box;
     border: 1px solid rgb(190, 190, 190);
+}
+
+.paint {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
 }
