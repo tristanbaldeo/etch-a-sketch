@@ -90,7 +90,7 @@ body {
     justify-content: center;
 }
 
-.red-paint, .orange-paint, .yellow-paint, .green-paint, .blue-paint, .purple-paint, .black-paint, .white-paint {
+.red, .orange, .yellow, .green, .blue, .purple, .black, .white {
     max-width: 32px;
     border: 2px solid black;
     border-radius: 32px;

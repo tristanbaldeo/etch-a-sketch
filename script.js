@@ -21,6 +21,33 @@ function changeWidth() {
 
 grid.onchange=function() {
 	changeWidth();
+
+    document.querySelectorAll(".row").forEach(paint => {
+        paint.addEventListener("mousedown", () => {
+            paint.style.backgroundColor = "black";
+    })});
+    
+    let mouseDown = false;
+let mouseUp = true;
+
+document.querySelectorAll(".row").forEach(paint => {
+    paint.addEventListener("mousedown", () => {
+        mouseDown = !mouseDown;
+    })
+});
+
+document.querySelectorAll(".row").forEach(paint => {
+    paint.addEventListener("mouseover", () => {
+        if (mouseDown) {
+        paint.style.backgroundColor = "black";
+    }})
+});
+
+document.querySelectorAll(".row").forEach(paint => {
+    paint.addEventListener("mouseup", () => {
+        mouseDown = !mouseDown;
+    })
+});
 }
 
 function changeGrid() {
@@ -48,3 +75,25 @@ function makeGrid() {
 
 changeWidth();
 makeGrid();
+
+let mouseDown = false;
+let mouseUp = true;
+
+document.querySelectorAll(".row").forEach(paint => {
+    paint.addEventListener("mousedown", () => {
+        mouseDown = !mouseDown;
+    })
+});
+
+document.querySelectorAll(".row").forEach(paint => {
+    paint.addEventListener("mouseover", () => {
+        if (mouseDown) {
+        paint.style.backgroundColor = "black";
+    }})
+});
+
+document.querySelectorAll(".row").forEach(paint => {
+    paint.addEventListener("mouseup", () => {
+        mouseDown = !mouseDown;
+    })
+});
