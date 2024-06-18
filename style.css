@@ -112,7 +112,7 @@ body {
     border: 1px solid rgb(190, 190, 190);
 }
 
-.paint {
+#redPaint, #orangePaint, #yellowPaint, #greenPaint, #bluePaint, #purplePaint, #blackPaint, #whitePaint, #eyedropperTool, #eraserTool {
     border: none;
     cursor: pointer;
     appearance: none;

@@ -28,7 +28,7 @@ grid.onchange=function() {
     
     document.querySelectorAll(".row").forEach(paint => {
         paint.addEventListener("mousedown", () => {
-            paint.style.backgroundColor = "black";
+            paint.style.backgroundColor = paintColor;
     })});
     
     document.querySelectorAll(".row").forEach(paint => {
@@ -40,7 +40,7 @@ grid.onchange=function() {
     document.querySelectorAll(".row").forEach(paint => {
         paint.addEventListener("mouseover", () => {
             if (mouseDown) {
-            paint.style.backgroundColor = "black";
+            paint.style.backgroundColor = paintColor;
         }})
     });
     
@@ -80,9 +80,11 @@ makeGrid();
 let mouseDown = false;
 let mouseUp = true;
 
+let paintColor = "black"
+
 document.querySelectorAll(".row").forEach(paint => {
     paint.addEventListener("mousedown", () => {
-        paint.style.backgroundColor = "black";
+        paint.style.backgroundColor = paintColor;
 })});
 
 document.querySelectorAll(".row").forEach(paint => {
@@ -94,7 +96,7 @@ document.querySelectorAll(".row").forEach(paint => {
 document.querySelectorAll(".row").forEach(paint => {
     paint.addEventListener("mouseover", () => {
         if (mouseDown) {
-        paint.style.backgroundColor = "black";
+        paint.style.backgroundColor = paintColor;
     }})
 });
 
@@ -107,4 +109,40 @@ document.querySelectorAll(".row").forEach(paint => {
 let reset = document.querySelector('.clear');
 reset.addEventListener('click', function (){
     $(".row").css( 'background-color', '#f5f5f5');
+});
+
+$("#redPaint").click(function () {
+    paintColor = "red"
+});
+
+$("#orangePaint").click(function () {
+    paintColor = "orange"
+});
+
+$("#yellowPaint").click(function () {
+    paintColor = "yellow"
+});
+
+$("#greenPaint").click(function () {
+    paintColor = "green"
+});
+
+$("#bluePaint").click(function () {
+    paintColor = "blue"
+});
+
+$("#purplePaint").click(function () {
+    paintColor = "purple"
+});
+
+$("#blackPaint").click(function () {
+    paintColor = "black"
+});
+
+$("#whitePaint").click(function () {
+    paintColor = "white"
+});
+
+$("#eraserTool").click(function () {
+    paintColor = "#f5f5f5"
 });
