@@ -1,5 +1,6 @@
 const container = document.querySelector(".grid-container");
 const grid = document.getElementById("grid-size");
+const rows = document.querySelectorAll("row")
 
 function changeWidth() {
 	let selectedValue = grid.options[grid.selectedIndex].value; 
@@ -101,4 +102,9 @@ document.querySelectorAll(".row").forEach(paint => {
     paint.addEventListener("mouseup", () => {
         mouseDown = !mouseDown;
     })
+});
+
+let reset = document.querySelector('.clear');
+reset.addEventListener('click', function (){
+    $(".row").css( 'background-color', '#f5f5f5');
 });
