@@ -2,6 +2,23 @@ const container = document.querySelector(".grid-container");
 const grid = document.getElementById("grid-size");
 const rows = document.querySelectorAll("row")
 
+const colorButtons = [
+    { id: "#redPaint", color: "red" },
+    { id: "#orangePaint", color: "orange" },
+    { id: "#yellowPaint", color: "yellow" },
+    { id: "#greenPaint", color: "green" },
+    { id: "#bluePaint", color: "blue" },
+    { id: "#purplePaint", color: "purple" },
+    { id: "#blackPaint", color: "black" },
+    { id: "#whitePaint", color: "white" },
+    { id: "#eraserTool", color: "#f5f5f5" },
+];
+
+let mouseDown = false;
+let mouseUp = true;
+
+let paintColor = "black"
+
 function changeWidth() {
 	let selectedValue = grid.options[grid.selectedIndex].value; 
     console.log(selectedValue);
@@ -20,50 +37,6 @@ function changeWidth() {
     makeGrid();
 }
 
-grid.onchange=function() {
-	changeWidth();
-
-    let mouseDown = false;
-    let mouseUp = true;
-    
-    document.querySelectorAll(".row").forEach(paint => {
-        paint.addEventListener("mousedown", () => {
-            paint.style.backgroundColor = paintColor;
-    })});
-    
-    document.querySelectorAll(".row").forEach(paint => {
-        paint.addEventListener("mousedown", () => {
-            mouseDown = !mouseDown;
-        })
-    });
-    
-    document.querySelectorAll(".row").forEach(paint => {
-        paint.addEventListener("mouseover", () => {
-            if (mouseDown) {
-            paint.style.backgroundColor = paintColor;
-        }})
-    });
-    
-    document.querySelectorAll(".row").forEach(paint => {
-        paint.addEventListener("mouseup", () => {
-            mouseDown = !mouseDown;
-        })
-    });
-}
-
-function changeGrid() {
-    if (grid.value == "16x16") {
-        gridSize = 16;
-    } else if (grid.value == "32x32") {
-        gridSize = 32;
-    } else if (grid.value == "64x64") {
-        gridSize = 64;
-    } else {
-        gridSize = 8;
-    }
-    console.log(gridSize)
-}
-
 function makeGrid() {
     for (i = 0; i < gridSize * gridSize; i++) {
         let row = document.createElement("div");
@@ -72,77 +45,40 @@ function makeGrid() {
         row.className = "row";
         container.appendChild(row);
     }
+    addPaintListeners()
 }
 
 changeWidth();
 makeGrid();
 
-let mouseDown = false;
-let mouseUp = true;
+function addPaintListeners() {
+    document.querySelectorAll(".row").forEach(paint => {
+        paint.addEventListener("mousedown", () => {
+            paint.style.backgroundColor = paintColor;
+            mouseDown = true;
+        });
+        paint.addEventListener("mouseover", () => {
+            if (mouseDown) paint.style.backgroundColor = paintColor;
+            });
+        paint.addEventListener("mouseup", () => {
+            mouseDown = false;
+        });
+    });
+}
 
-let paintColor = "black"
+grid.onchange=function() {
+	changeWidth();
+    addPaintListeners();
+}
 
-document.querySelectorAll(".row").forEach(paint => {
-    paint.addEventListener("mousedown", () => {
-        paint.style.backgroundColor = paintColor;
-})});
-
-document.querySelectorAll(".row").forEach(paint => {
-    paint.addEventListener("mousedown", () => {
-        mouseDown = !mouseDown;
-    })
+document.querySelector('.clear').addEventListener('click', () => {
+    document.querySelectorAll(".row").forEach(row => {
+        row.style.backgroundColor = '#f5f5f5';
+    });
 });
 
-document.querySelectorAll(".row").forEach(paint => {
-    paint.addEventListener("mouseover", () => {
-        if (mouseDown) {
-        paint.style.backgroundColor = paintColor;
-    }})
-});
-
-document.querySelectorAll(".row").forEach(paint => {
-    paint.addEventListener("mouseup", () => {
-        mouseDown = !mouseDown;
-    })
-});
-
-let reset = document.querySelector('.clear');
-reset.addEventListener('click', function (){
-    $(".row").css( 'background-color', '#f5f5f5');
-});
-
-$("#redPaint").click(function () {
-    paintColor = "red"
-});
-
-$("#orangePaint").click(function () {
-    paintColor = "orange"
-});
-
-$("#yellowPaint").click(function () {
-    paintColor = "yellow"
-});
-
-$("#greenPaint").click(function () {
-    paintColor = "green"
-});
-
-$("#bluePaint").click(function () {
-    paintColor = "blue"
-});
-
-$("#purplePaint").click(function () {
-    paintColor = "purple"
-});
-
-$("#blackPaint").click(function () {
-    paintColor = "black"
-});
-
-$("#whitePaint").click(function () {
-    paintColor = "white"
-});
-
-$("#eraserTool").click(function () {
-    paintColor = "#f5f5f5"
+colorButtons.forEach(button => {
+    document.querySelector(button.id).addEventListener("click", () => {
+        paintColor = button.color;
+    });
 });
